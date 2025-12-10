@@ -52,18 +52,18 @@ const App: React.FC = () => {
              </p>
              
              <div className="flex justify-center gap-6 relative z-10">
-               <a href="mailto:contact@example.com" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="Email">
+               <a href="mailto:xiars@mail.ustc.edu.cn" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="Email">
                  <Mail size={20} />
                </a>
-               <a href="#" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="GitHub">
+               <a href="https://github.com/xiaris" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="GitHub">
                  <Github size={20} />
                </a>
-               <a href="#" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300 flex items-center justify-center" title="ORCID">
+               <a href="https://orcid.org/0009-0005-3916-1455" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300 flex items-center justify-center" title="ORCID">
                  <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.306v7.419h2.297c2.181 0 3.669-1.378 3.669-3.713 0-2.062-1.284-3.706-3.706-3.706h-2.26z"/>
                  </svg>
                </a>
-               <a href="#" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="Google Scholar">
+               <a href="https://scholar.google.com/citations?hl=zh-CN&user=EFxWWW0AAAAJ" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-slate-800 hover:bg-cosmic-blue hover:text-white text-slate-400 transition-all duration-300" title="Google Scholar">
                  <GraduationCap size={20} />
                </a>
              </div>

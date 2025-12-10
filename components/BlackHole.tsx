@@ -3,43 +3,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Add type declarations for React Three Fiber elements
-// Augment 'react' module for React 18+ setups where JSX is namespaced under React
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      ambientLight: any;
-      group: any;
-      points: any;
-      bufferGeometry: any;
-      bufferAttribute: any;
-      pointsMaterial: any;
-      mesh: any;
-      sphereGeometry: any;
-      meshBasicMaterial: any;
-      ringGeometry: any;
-    }
-  }
-}
-
-// Augment global scope for setups where JSX is in the global namespace
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      ambientLight: any;
-      group: any;
-      points: any;
-      bufferGeometry: any;
-      bufferAttribute: any;
-      pointsMaterial: any;
-      mesh: any;
-      sphereGeometry: any;
-      meshBasicMaterial: any;
-      ringGeometry: any;
-    }
-  }
-}
-
 const MIN_RADIUS = 2.5;
 const MAX_RADIUS = 10.2; // Increased by 20% (was 8.5)
 const PARTICLE_COUNT = 9600; // Increased by 20% (was 8000)
