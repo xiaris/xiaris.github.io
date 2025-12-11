@@ -72,7 +72,7 @@ const App: React.FC = () => {
       </main>
 
       <footer className="py-8 text-center text-slate-600 text-sm border-t border-slate-900">
-        <p>© {new Date().getFullYear()} Ruisong Xia. Built with React & Tailwind.</p>
+        <p>© {new Date().getFullYear()} Ruisong Xia. Built with AI STUDIO.</p>
       </footer>
     </div>
   );
