@@ -53,7 +53,7 @@ const App: React.FC = () => {
              <div className="relative z-10 shrink-0">
                <div className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-slate-800/80 overflow-hidden shadow-2xl relative bg-slate-800">
                  <img 
-                   src="image.jpg" 
+                   src="/image.jpg" 
                    alt="Profile" 
                    className="w-full h-full object-cover" 
                  />
