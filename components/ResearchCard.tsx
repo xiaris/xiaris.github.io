@@ -16,16 +16,20 @@ const ResearchCard: React.FC<Props> = ({ paper }) => {
         <span className="text-slate-500 text-xs font-mono">{paper.date}</span>
       </div>
       
-      <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-cosmic-blue transition-colors">
+      <h3 className="text-xl font-semibold text-slate-100 mb-2 group-hover:text-cosmic-blue transition-colors">
         {paper.title}
       </h3>
+
+      <div className="text-sm text-slate-400 font-medium mb-4">
+        {paper.authors}
+      </div>
       
       <p className="text-slate-400 text-sm leading-relaxed mb-6">
         {paper.abstract}
       </p>
       
       <div className="flex items-center justify-between mt-auto">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 max-w-[85%]">
           {paper.tags.map(tag => (
             <span key={tag} className="text-xs text-slate-500">#{tag}</span>
           ))}
