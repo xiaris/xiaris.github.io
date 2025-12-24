@@ -1,70 +1,87 @@
+
 import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const MIN_RADIUS = 2.5;
-const MAX_RADIUS = 10.2; // Increased by 20% (was 8.5)
-const PARTICLE_COUNT = 9600; // Increased by 20% (was 8000)
+const MAX_RADIUS = 10.2; 
+const PARTICLE_COUNT = 9600; 
 
 // Inner component for the particle system
 const AccretionDisk: React.FC = () => {
   const points = useRef<THREE.Points>(null);
 
-  // Generate geometry data once
-  const { positions, colors } = useMemo(() => {
-    const positions = new Float32Array(PARTICLE_COUNT * 3);
-    const colors = new Float32Array(PARTICLE_COUNT * 3);
+  // Pre-calculate all static properties and the velocity factor (Keplerian)
+  const { positions, colors, radii, angles, velocities } = useMemo(() => {
+    const pos = new Float32Array(PARTICLE_COUNT * 3);
+    const col = new Float32Array(PARTICLE_COUNT * 3);
+    const rads = new Float32Array(PARTICLE_COUNT);
+    const angs = new Float32Array(PARTICLE_COUNT);
+    const vels = new Float32Array(PARTICLE_COUNT);
 
-    const colorCore = new THREE.Color('#0ea5e9'); // Cosmic Blue (Hotter)
+    const colorCore = new THREE.Color('#0ea5e9'); // Cosmic Blue
     const colorMid = new THREE.Color('#f59e0b'); // Event Orange
-    const colorEdge = new THREE.Color('#dc2626'); // Event Red (Cooler)
+    const colorEdge = new THREE.Color('#dc2626'); // Event Red
+
+    // Speed constant for Keplerian motion (omega = k * r^-1.5)
+    // Original: 3.5
+    // After first 30% reduction: 2.45
+    // After second 30% reduction: 1.715 (2.45 * 0.7)
+    const K = 1.715; 
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      // Radius: Distribute more particles closer to the center for intensity
       const r = MIN_RADIUS + Math.pow(Math.random(), 2) * (MAX_RADIUS - MIN_RADIUS);
-      
-      // Angle: Full circle
       const theta = Math.random() * Math.PI * 2;
-      
-      // Thickness: Thinner near event horizon, flaring out slightly at edges
-      // Standard deviation grows with radius
       const spread = 0.05 + (r - MIN_RADIUS) * 0.08; 
       const y = (Math.random() - 0.5) * spread;
 
-      // Polar to Cartesian conversion
       const x = r * Math.cos(theta);
       const z = r * Math.sin(theta);
 
-      positions.set([x, y, z], i * 3);
-
-      // Color logic based on distance from center (temperature gradient)
-      // Normalize r to 0..1 range between MIN and MAX
-      const t = (r - MIN_RADIUS) / (MAX_RADIUS - MIN_RADIUS);
+      pos.set([x, y, z], i * 3);
+      rads[i] = r;
+      angs[i] = theta;
       
+      // Velocity is units/second thanks to useFrame delta
+      vels[i] = K * Math.pow(r, -1.5);
+
+      const t = (r - MIN_RADIUS) / (MAX_RADIUS - MIN_RADIUS);
       let color = new THREE.Color();
-      // Transition from Blue -> Orange -> Red
       if (t < 0.2) {
         color.lerpColors(colorCore, colorMid, t / 0.2);
       } else {
         color.lerpColors(colorMid, colorEdge, (t - 0.2) / 0.8);
       }
-      
-      // Randomize brightness for "sparkle"
       const brightness = 0.5 + Math.random() * 1.5;
       color.multiplyScalar(brightness);
 
-      colors.set([color.r, color.g, color.b], i * 3);
+      col.set([color.r, color.g, color.b], i * 3);
     }
 
-    return { positions, colors };
+    return { 
+      positions: pos, 
+      colors: col, 
+      radii: rads, 
+      angles: angs, 
+      velocities: vels 
+    };
   }, []);
 
-  // Animation Loop
-  useFrame((state) => {
+  useFrame((_state, delta) => {
     if (points.current) {
-      // Differential rotation could be done in shader, but simple rotation is fine here
-      points.current.rotation.y -= 0.003;
+      const positionAttr = points.current.geometry.attributes.position;
+      const posArray = positionAttr.array as Float32Array;
+      
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const r = radii[i];
+        // delta is the time since last frame in seconds. 
+        // Multiplying by delta ensures frame-rate independence.
+        angles[i] -= velocities[i] * delta;
+        posArray[i * 3] = r * Math.cos(angles[i]);
+        posArray[i * 3 + 2] = r * Math.sin(angles[i]);
+      }
+      positionAttr.needsUpdate = true;
     }
   });
 
@@ -97,7 +114,27 @@ const AccretionDisk: React.FC = () => {
   );
 };
 
-// The Event Horizon: Pure void
+// Component to handle the relativistic precession of the entire disk system
+const PrecessingSystem: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  useFrame((state) => {
+    if (groupRef.current) {
+      /** 
+       * Precession: The rotation of the orbital plane itself.
+       * state.clock.getElapsedTime() is time-dependent.
+       */
+      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+    }
+  });
+
+  return (
+    <group ref={groupRef} rotation={[Math.PI / 8, 0, Math.PI / 10]} scale={0.8}>
+      {children}
+    </group>
+  );
+};
+
 const EventHorizon: React.FC = () => {
   return (
     <mesh>
@@ -107,32 +144,28 @@ const EventHorizon: React.FC = () => {
   );
 };
 
-// Main Component
 const BlackHole: React.FC = () => {
   return (
-    // Width set to 138% so that the center (50% of container) aligns with 69% of the viewport width.
     <div className="w-[138%] h-full min-h-[400px]">
       <Canvas 
-        camera={{ position: [0, 5, 12], fov: 35 }} 
+        camera={{ position: [0, 6, 14], fov: 35 }} 
         gl={{ alpha: true, antialias: true }}
-        dpr={[1, 2]} // Support high DPI screens
+        dpr={[1, 2]}
       >
         <ambientLight intensity={0.1} />
         
-        {/* Centered Group at Origin */}
-        <group rotation={[Math.PI / 12, 0, Math.PI / 8]} scale={0.8} position={[0, 0, 0]}>
+        <PrecessingSystem>
           <AccretionDisk />
           <EventHorizon />
-        </group>
+        </PrecessingSystem>
 
         <OrbitControls 
           enableZoom={false} 
           enablePan={false}
-          autoRotate 
-          autoRotateSpeed={0.5} 
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 1.5}
-          target={[0, 0, 0]} /* Orbit around the origin */
+          autoRotate={false}
+          minPolarAngle={Math.PI / 6}
+          maxPolarAngle={Math.PI / 1.8}
+          target={[0, 0, 0]}
         />
       </Canvas>
     </div>

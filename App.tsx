@@ -6,9 +6,8 @@ import Timeline from './components/Timeline';
 import { RESEARCH_DATA } from './constants';
 import { Mail, Github, GraduationCap } from 'lucide-react';
 
-// We use a relative string path for the image. 
-// Since index.html and image.jpg are in the same root directory, './image.jpg' works perfectly.
-// This avoids "Failed to resolve module specifier" errors in environments that don't support image imports in JS.
+// Changed to local asset path. 
+// Please ensure you create an 'assets' folder and place 'image.jpg' inside it.
 const PROFILE_IMAGE = './image.jpg';
 
 const App: React.FC = () => {
@@ -59,7 +58,6 @@ const App: React.FC = () => {
                <div className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-slate-800/80 overflow-hidden shadow-2xl relative bg-slate-800 group">
                  <img 
                    src={PROFILE_IMAGE}
-                   alt="Ruisong Xia" 
                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                  />
                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-full"></div>

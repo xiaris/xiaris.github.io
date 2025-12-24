@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+  "scripts": {    
     "predeploy":"npm run build",
     "deploy":"gh-pages -d dist",
     "dev": "vite",
@@ -18,7 +18,8 @@
     "lucide-react": "^0.555.0",
     "three": "0.173.0",
     "@react-three/fiber": "9.0.4",
-    "@react-three/drei": "10.0.3"
+    "@react-three/drei": "10.0.3",
+    "transparent": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
