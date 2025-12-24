@@ -8,7 +8,8 @@ import { Mail, Github, GraduationCap } from 'lucide-react';
 
 // Changed to local asset path. 
 // Please ensure you create an 'assets' folder and place 'image.jpg' inside it.
-const PROFILE_IMAGE = './image.jpg';
+// const PROFILE_IMAGE = './image.jpg';
+import PROFILE_IMAGE from './image.jpg';
 
 const App: React.FC = () => {
   return (
