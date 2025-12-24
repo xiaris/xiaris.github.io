@@ -67,8 +67,8 @@ const App: React.FC = () => {
              {/* Right: Content */}
              <div className="relative z-10 flex-1 text-center md:text-left">
                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Collaborate</h2>
-               <p className="text-slate-400 mb-8 max-w-[300px] mx-auto md:mx-0 text-lg leading-relaxed">
-                 Always open to new research ideas, opportunities, and collaborative possibilities.
+               <p className="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 text-lg leading-relaxed">
+                 Always open to new research ideas and collaborative possibilities. Currently seeking postdoctoral opportunities starting around Autumn 2026.
                </p>
                
                <div className="flex justify-center md:justify-start gap-5">
