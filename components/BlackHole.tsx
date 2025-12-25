@@ -25,10 +25,7 @@ const AccretionDisk: React.FC = () => {
     const colorEdge = new THREE.Color('#dc2626'); // Event Red
 
     // Speed constant for Keplerian motion (omega = k * r^-1.5)
-    // Original: 3.5
-    // After first 30% reduction: 2.45
-    // After second 30% reduction: 1.715 (2.45 * 0.7)
-    const K = 1.715; 
+    const K = 1.5; 
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const r = MIN_RADIUS + Math.pow(Math.random(), 2) * (MAX_RADIUS - MIN_RADIUS);
@@ -124,12 +121,12 @@ const PrecessingSystem: React.FC<{ children: React.ReactNode }> = ({ children })
        * Precession: The rotation of the orbital plane itself.
        * state.clock.getElapsedTime() is time-dependent.
        */
-      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
     }
   });
 
   return (
-    <group ref={groupRef} rotation={[Math.PI / 8, 0, Math.PI / 10]} scale={0.8}>
+    <group ref={groupRef} rotation={[-Math.PI / 12, 0, Math.PI / 10]} scale={0.8}>
       {children}
     </group>
   );
