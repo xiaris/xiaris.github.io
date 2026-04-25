@@ -1,4 +1,4 @@
-import { ResearchPaper, TimelineEvent } from './types';
+import { ResearchPaper, ShowcaseItem, TimelineEvent } from './types';
 
 export const RESEARCH_DATA: ResearchPaper[] = [
   {
@@ -48,4 +48,63 @@ export const TIMELINE_DATA: TimelineEvent[] = [
     institution: 'Huazhong University of Science and Technology',
     description: 'Wuhan, China'
   }
+];
+
+export const SHOWCASE_DATA: ShowcaseItem[] = [
+  {
+    id: 'showcase-1',
+    title: 'Project Title 01',
+    subtitle: 'A concise one-line framing for this flagship achievement.',
+    problem: 'Coming soon: summarize the scientific question or challenge this work addresses.',
+    method: 'Coming soon: describe the observational strategy, methodology, or model in a few strong sentences.',
+    result: 'Coming soon: highlight the most important result you want the audience to remember.',
+    impact: 'Coming soon: explain why this matters for the field and why it represents your contribution.',
+    tags: ['Flagship', 'Method', 'Science'],
+    links: [
+      { label: 'Paper Link', href: '#' },
+      { label: 'Figure / Demo', href: '#' },
+    ],
+  },
+  {
+    id: 'showcase-2',
+    title: 'Project Title 02',
+    subtitle: 'A visual placeholder for your next core story.',
+    problem: 'Coming soon: introduce the context and the motivation for this representative project.',
+    method: 'Coming soon: note the dataset, analysis pipeline, or theoretical approach.',
+    result: 'Coming soon: add the one result that deserves projection on a large screen.',
+    impact: 'Coming soon: capture the value, novelty, or insight this result delivers.',
+    tags: ['Observation', 'Analysis', 'Results'],
+    links: [
+      { label: 'Publication', href: '#' },
+      { label: 'Supporting Material', href: '#' },
+    ],
+  },
+  {
+    id: 'showcase-3',
+    title: 'Project Title 03',
+    subtitle: 'Reserved for a contrast case, extension, or complementary study.',
+    problem: 'Coming soon: define the niche or research tension this work resolves.',
+    method: 'Coming soon: explain the technique, comparison, or innovation behind the work.',
+    result: 'Coming soon: state the strongest finding or measurable improvement.',
+    impact: 'Coming soon: show how this piece strengthens your overall research profile.',
+    tags: ['Timing', 'Interpretation', 'Story'],
+    links: [
+      { label: 'Abstract', href: '#' },
+      { label: 'Slides / Poster', href: '#' },
+    ],
+  },
+  {
+    id: 'showcase-4',
+    title: 'Project Title 04',
+    subtitle: 'Reserved for future work, synthesis, or cross-cutting contribution.',
+    problem: 'Coming soon: use this slot for a final chapter or forward-looking milestone.',
+    method: 'Coming soon: describe the framework, collaboration, or broader technical arc.',
+    result: 'Coming soon: summarize the main takeaway that closes the presentation strongly.',
+    impact: 'Coming soon: connect this chapter to your future direction or overall significance.',
+    tags: ['Synthesis', 'Future Work', 'Vision'],
+    links: [
+      { label: 'Reference', href: '#' },
+      { label: 'Additional Link', href: '#' },
+    ],
+  },
 ];

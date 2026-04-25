@@ -141,9 +141,14 @@ const EventHorizon: React.FC = () => {
   );
 };
 
-const BlackHole: React.FC = () => {
+type BlackHoleProps = {
+  className?: string;
+  controls?: boolean;
+};
+
+const BlackHole: React.FC<BlackHoleProps> = ({ className = 'w-[138%] h-full min-h-[400px]', controls = true }) => {
   return (
-    <div className="w-[138%] h-full min-h-[400px]">
+    <div className={className}>
       <Canvas 
         camera={{ position: [0, 6, 14], fov: 35 }} 
         gl={{ alpha: true, antialias: true }}
@@ -156,14 +161,16 @@ const BlackHole: React.FC = () => {
           <EventHorizon />
         </PrecessingSystem>
 
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false}
-          autoRotate={false}
-          minPolarAngle={Math.PI / 6}
-          maxPolarAngle={Math.PI / 1.8}
-          target={[0, 0, 0]}
-        />
+        {controls ? (
+          <OrbitControls 
+            enableZoom={false} 
+            enablePan={false}
+            autoRotate={false}
+            minPolarAngle={Math.PI / 6}
+            maxPolarAngle={Math.PI / 1.8}
+            target={[0, 0, 0]}
+          />
+        ) : null}
       </Canvas>
     </div>
   );

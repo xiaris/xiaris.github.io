@@ -4,6 +4,10 @@ import BlackHole from './BlackHole';
 import { Download, Telescope } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const cvHref = import.meta.env.DEV
+    ? '/dist/assets/Ruisong_Xia_CV.pdf'
+    : './assets/Ruisong_Xia_CV.pdf';
+
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center">
       
@@ -59,11 +63,17 @@ const Hero: React.FC = () => {
               <span className="text-slate-100 font-medium tracking-wide text-base">View Research</span>
             </a>
             
-            <button className="group relative px-7 py-3.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cosmic-blue/30 transition-all duration-300 flex items-center justify-center gap-3.5 backdrop-blur-md overflow-hidden active:scale-95 shadow-lg shadow-black/20">
+            <a
+              href={cvHref}
+              download="Ruisong_Xia_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-7 py-3.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cosmic-blue/30 transition-all duration-300 flex items-center justify-center gap-3.5 backdrop-blur-md overflow-hidden active:scale-95 shadow-lg shadow-black/20"
+            >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cosmic-blue/0 via-cosmic-blue/5 to-cosmic-blue/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               <Download size={27} className="text-cosmic-blue group-hover:-translate-y-1 transition-transform duration-300" />
               <span className="text-slate-100 font-medium tracking-wide text-base">Download CV</span>
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

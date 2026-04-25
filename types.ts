@@ -21,3 +21,21 @@ export interface NavItem {
   label: string;
   href: string;
 }
+
+export interface ShowcaseLink {
+  label: string;
+  href: string;
+}
+
+export interface ShowcaseItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  problem: string;
+  method: string;
+  result: string;
+  impact: string;
+  image?: string;
+  tags: string[];
+  links: ShowcaseLink[];
+}
