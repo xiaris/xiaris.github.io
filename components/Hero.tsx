@@ -40,10 +40,10 @@ const Hero: React.FC = () => {
           <div className="mb-10 pl-6 border-l-2 border-cosmic-blue/30 md:pr-[4vw] flex flex-col gap-3">
             <h3 className="text-cosmic-blue font-mono text-xs tracking-widest uppercase opacity-90 font-semibold">Research Interests</h3>
             <div className="text-slate-400 text-lg md:text-xl font-light tracking-wide flex flex-col gap-2">
-              <span className="leading-snug">AGN Optical/X-ray Variability</span>
+              <span className="leading-snug">Optical/X-ray Variability from Accreting Black Holes</span>
               <span className="leading-snug">Statistical Methods</span>
               <span className="leading-snug">Accretion Disks</span>
-              <span className="leading-snug">AI Applications in AGN Variability</span>
+              <span className="leading-snug">Machine Learning for Time-domain Astrophysics</span>
             </div>
           </div>
           
