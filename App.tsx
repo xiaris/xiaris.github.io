@@ -5,10 +5,6 @@ import ResearchCard from './components/ResearchCard';
 import Timeline from './components/Timeline';
 import { RESEARCH_DATA } from './constants';
 import { Mail, Github, GraduationCap } from 'lucide-react';
-
-// Changed to local asset path. 
-// Please ensure you create an 'assets' folder and place 'image.jpg' inside it.
-// const PROFILE_IMAGE = './image.jpg';
 import PROFILE_IMAGE from './image.jpg';
 
 const App: React.FC = () => {
@@ -69,8 +65,7 @@ const App: React.FC = () => {
              <div className="relative z-10 flex-1 text-center md:text-left">
                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Collaborate</h2>
                <p className="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 text-lg leading-relaxed">
-                 Always open to new research ideas and collaborative possibilities. 
-                 Currently seeking postdoctoral opportunities starting around Autumn 2026.
+                 Always open to new research ideas, opportunities, and collaborative possibilities. Seeking postdoctoral opportunities with a flexible start date.
                </p>
                
                <div className="flex justify-center md:justify-start gap-5">
@@ -95,7 +90,7 @@ const App: React.FC = () => {
       </main>
 
       <footer className="py-8 text-center text-slate-600 text-sm border-t border-slate-900">
-        <p>© {new Date().getFullYear()} Ruisong Xia. Built with AI STUDIO.</p>
+        <p>© {new Date().getFullYear()} Ruisong Xia.</p>
       </footer>
     </div>
   );

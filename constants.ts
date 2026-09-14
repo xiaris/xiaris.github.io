@@ -35,17 +35,24 @@ export const RESEARCH_DATA: ResearchPaper[] = [
 
 export const TIMELINE_DATA: TimelineEvent[] = [
   {
-    id: '1',
-    year: 'Sep. 2021 - Present (Expected Jun. 2026)',
-    title: 'Ph.D. Candidate, Astronomy',
+    id: '3',
+    year: 'Jul. 2026 - Present',
+    title: 'Special-term Associate Researcher',
     institution: 'University of Science and Technology of China',
-    description: 'Hefei, China'
+    description: 'Hefei, China | Advisor: Prof. Yongquan Xue'
+  },
+  {
+    id: '1',
+    year: 'Sep. 2021 - Jun. 2026',
+    title: 'Ph.D. in Astronomy',
+    institution: 'University of Science and Technology of China',
+    description: 'Hefei, China | Advisor: Prof. Yongquan Xue'
   },
   {
     id: '2',
     year: 'Sep. 2017 - Jun. 2021',
-    title: 'B.S., Physics',
+    title: 'B.S. in Physics',
     institution: 'Huazhong University of Science and Technology',
-    description: 'Wuhan, China'
+    description: 'Wuhan, China | Advisors: Prof. Qingwen Wu, Prof. Yongquan Xue'
   }
 ];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BlackHole from './BlackHole';
-import { Download, Telescope } from 'lucide-react';
+import { Telescope } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cosmic-blue opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cosmic-blue"></span>
             </span>
-            <span className="text-slate-300 font-mono text-xs tracking-widest uppercase">PhD Candidate</span>
+            <span className="text-slate-300 font-mono text-xs tracking-widest uppercase">PhD</span>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] whitespace-nowrap">
@@ -58,12 +58,6 @@ const Hero: React.FC = () => {
               <Telescope size={27} className="text-cosmic-blue group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-slate-100 font-medium tracking-wide text-base">View Research</span>
             </a>
-            
-            <button className="group relative px-7 py-3.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cosmic-blue/30 transition-all duration-300 flex items-center justify-center gap-3.5 backdrop-blur-md overflow-hidden active:scale-95 shadow-lg shadow-black/20">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cosmic-blue/0 via-cosmic-blue/5 to-cosmic-blue/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              <Download size={27} className="text-cosmic-blue group-hover:-translate-y-1 transition-transform duration-300" />
-              <span className="text-slate-100 font-medium tracking-wide text-base">Download CV</span>
-            </button>
           </div>
         </motion.div>
       </div>
