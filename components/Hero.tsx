@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BlackHole from './BlackHole';
-import { Telescope } from 'lucide-react';
+import { ArrowDown, Telescope } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center">
+    <section id="hero" className="hero-section relative h-screen w-full overflow-hidden flex items-center">
       
       {/* Background Visual Layer */}
       <div className="absolute inset-0 w-full h-full z-0">
         <BlackHole />
         {/* Left Gradient Mask to unify text background */}
-        <div className="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-void via-void/95 to-transparent pointer-events-none"></div>
+        <div className="hero-mask absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-void via-void/95 to-transparent pointer-events-none"></div>
       </div>
 
       {/* Background Gradient Mesh (Subtle Bottom Left) */}
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-cosmic-blue/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none z-0"></div>
 
       {/* Content Layer */}
-      <div className="relative z-10 w-[40%] h-full flex flex-col justify-center px-6 md:px-0 md:pl-[3%] pointer-events-none">
+      <div className="hero-content relative z-10 w-[40%] h-full flex flex-col justify-center px-6 md:px-0 md:pl-[3%] pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,6 +60,18 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </motion.div>
+      </div>
+      <div className="research-manifesto" aria-label="Making variability a more informative probe in time-domain astronomy">
+        <span aria-hidden="true">
+          {'Making variability a more informative probe in time-domain astronomy'.split(' ').map((word, index) => (
+            <span className="research-manifesto-word" style={{ animationDelay: `${index * -0.18}s` }} key={`${word}-${index}`}>
+              {word}{' '}
+            </span>
+          ))}
+        </span>
+        <a href="#research" className="research-scroll-link" aria-label="Scroll to selected publications">
+          <ArrowDown size={30} strokeWidth={1.5} aria-hidden="true" />
+        </a>
       </div>
     </section>
   );

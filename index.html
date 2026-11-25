@@ -44,6 +44,81 @@
         color: #e2e8f0;
         overflow-x: hidden;
       }
+      .research-manifesto {
+        position: absolute;
+        z-index: 10;
+        bottom: 3.5rem;
+        left: 0;
+        width: 100%;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #c5dbea;
+        font-size: clamp(1.1rem, 2vw, 1.75rem);
+        font-weight: 500;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        pointer-events: none;
+      }
+      .research-manifesto-word {
+        display: inline-block;
+        white-space: pre;
+        animation: manifesto-float 5s ease-in-out infinite;
+      }
+      .research-scroll-link {
+        display: inline-flex;
+        margin-top: 0.6rem;
+        padding: 0.65rem;
+        border-radius: 9999px;
+        color: #7da9be;
+        pointer-events: auto;
+        animation: manifesto-arrow 2.5s ease-in-out infinite;
+        transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+      }
+      .research-scroll-link:hover, .research-scroll-link:focus-visible {
+        color: #d9f4ff;
+        background-color: rgba(56, 189, 248, 0.1);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.18);
+      }
+      .research-scroll-link:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
+      @keyframes manifesto-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(5px); }
+      }
+      @keyframes manifesto-float {
+        0%, 100% { transform: translateY(0) rotate(-1deg); }
+        50% { transform: translateY(-6px) rotate(1deg); }
+      }
+      @media (max-width: 767px) {
+        #hero.hero-section {
+          height: auto;
+          min-height: 100vh;
+          min-height: 100svh;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        #hero .hero-mask {
+          width: 100%;
+          background: linear-gradient(90deg, rgba(2, 4, 10, 0.96), rgba(2, 4, 10, 0.62));
+        }
+        #hero .hero-content {
+          width: 100%;
+          height: auto;
+          padding-top: 7rem;
+        }
+        #hero .research-manifesto {
+          position: relative;
+          bottom: auto;
+          margin-top: auto;
+          padding: 3rem 1.5rem 1.5rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .research-manifesto-word, .research-scroll-link { animation: none; }
+      }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
@@ -74,7 +149,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>

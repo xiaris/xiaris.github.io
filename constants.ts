@@ -2,6 +2,16 @@ import { ResearchPaper, TimelineEvent } from './types';
 
 export const RESEARCH_DATA: ResearchPaper[] = [
   {
+    id: '4',
+    title: 'Black hole ADaptive Multi-relation Mass Estimation based on Timing Analysis (BADMET)',
+    authors: 'Ruisong Xia, Yongquan Xue, Hao Liu, Guowei Ren, Mouyuan Sun, Qingwen Wu, Jialai Wang, Shuying Zhou, Zhen-Bo Su, Shifu Zhu, Mengqiu Huang',
+    journal: 'ApJ Letters · In press',
+    date: '2026',
+    abstract: 'BADMET combines variability and other mass-related observables to estimate black hole masses.',
+    tags: ['AGN', 'Black Hole Mass', 'X-ray Timing'],
+    link: 'https://arxiv.org/abs/2611.22771'
+  },
+  {
     id: '1',
     title: 'Baseline-Aware Dependence fitting for DAmping Timescales (BADDAT): a nearly unbiased approach to constraining optical variability dependence on physical properties of active galactic nuclei',
     authors: 'Ruisong Xia, Zhen-Yi Cai, Yongquan Xue, Xian-Liang Lu, Guowei Ren, Shuying Zhou, Mouyuan Sun, Shifu Zhu, Zhen-Bo Su, Hao Liu',
@@ -9,7 +19,7 @@ export const RESEARCH_DATA: ResearchPaper[] = [
     date: '2025',
     abstract: 'We introduce BADDAT, a novel forward modeling approach that explicitly accounts for baseline-induced biases in damping timescale measurements to robustly constrain their population-level dependence on AGN physical properties.',
     tags: ['AGN', 'Time-Domain', 'Statistical Methods'],
-    link: 'https://ui.adsabs.harvard.edu/abs/2025MNRAS.544L..96X/abstract'
+    link: 'https://academic.oup.com/mnrasl/article/544/1/L96/8294176'
   },
   {
     id: '2',
@@ -19,7 +29,7 @@ export const RESEARCH_DATA: ResearchPaper[] = [
     date: '2025',
     abstract: 'Reporting a possible QPO triplet structure formed by long-term cyclic evolution in RE J1034+396. By applying the relativistic precession model, we constrain the black hole mass and spin, proposing a quasiperiodic ultrafast outflow model to explain the complex timing behavior.',
     tags: ['QPO', 'Relativistic Precession', 'RE J1034+396', 'X-ray Timing'],
-    link: 'https://ui.adsabs.harvard.edu/abs/2025ApJ...989...59X/abstract'
+    link: 'https://doi.org/10.3847/1538-4357/adf225'
   },
   {
     id: '3',
@@ -29,7 +39,7 @@ export const RESEARCH_DATA: ResearchPaper[] = [
     date: '2024',
     abstract: 'Reporting the first observational evidence of a hysteretic, interconnected evolution between QPO frequency and time lag in AGNs, hinting at a possible long-term periodic pattern.',
     tags: ['QPO', 'RE J1034+396', 'X-ray Timing'],
-    link: 'https://ui.adsabs.harvard.edu/abs/2024ApJ...961L..32X/abstract'
+    link: 'https://doi.org/10.3847/2041-8213/ad1bf2'
   }
 ];
 

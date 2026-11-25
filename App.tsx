@@ -17,7 +17,7 @@ const App: React.FC = () => {
         
         {/* Research Section */}
         <section id="research" className="py-24 px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Selected Publications</h2>
             <a 
               href="https://ui.adsabs.harvard.edu/public-libraries/VgxKN0BZTrS814eDY5nRNw" 
@@ -29,9 +29,16 @@ const App: React.FC = () => {
             </a>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {RESEARCH_DATA.map((paper) => (
-              <ResearchCard key={paper.id} paper={paper} />
+          <div className="flex flex-col gap-6 md:hidden max-w-5xl mx-auto">
+            {RESEARCH_DATA.map((paper) => <ResearchCard key={paper.id} paper={paper} />)}
+          </div>
+          <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
+            {[0, 1].map((column) => (
+              <div key={column} className="flex flex-col gap-6 lg:gap-8">
+                {RESEARCH_DATA.filter((_, index) => index % 2 === column).map((paper) => (
+                  <ResearchCard key={paper.id} paper={paper} />
+                ))}
+              </div>
             ))}
           </div>
         </section>
@@ -65,7 +72,7 @@ const App: React.FC = () => {
              <div className="relative z-10 flex-1 text-center md:text-left">
                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Collaborate</h2>
                <p className="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 text-lg leading-relaxed">
-                 Always open to new research ideas, opportunities, and collaborative possibilities. Seeking postdoctoral opportunities with a flexible start date.
+                 Always open to new research ideas and collaborations. Seeking postdoctoral opportunities with a flexible start date.
                </p>
                
                <div className="flex justify-center md:justify-start gap-5">
